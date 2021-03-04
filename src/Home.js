@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Card from "@material-ui/core/Card";
+import SortIcon from "@material-ui/icons/ArrowDownward";
 import axios from 'axios';
 
 var defaultStartDate = new Date(2016,1,1);
@@ -11,16 +13,19 @@ var defaultEndDate = new Date(2017,1,1);
 const columns = [
   {
     name: 'Station Name',
-    selector: 'name'
+    selector: 'name',
+    sortable: true
   },
   {
     name: 'Date',
-    selector: 'date'
+    selector: 'date',
+    sortable: true
   },
   {
     name: 'Mean Temperature',
     cell: row =><Link to={{ pathname: `/detail/${row.id}`}} style={{display: "table-cell"}} target="_blank">{row.meanTemp}</Link>,
-    selector: 'meanTemp'
+    selector: 'meanTemp',
+    sortable: true
   }
 ];
 
@@ -77,10 +82,13 @@ function Home() {
       <h4>
       <button onClick={searchList}>Search</button>
       </h4>
+      <Card>
       <DataTable
         title="Weather Stations"
         columns={columns}
         data={stations instanceof Array ? stations : []}
+        defaultSortField="name"
+        sortIcon={<SortIcon />}
         highlightOnHover
         pagination
         paginationServer
@@ -91,6 +99,7 @@ function Home() {
         }}
         onChangePage={page => setPage(page)}
       />
+      </Card>
     </div>
   );
 }
