@@ -80,7 +80,7 @@ function Home() {
       <DataTable
         title="Weather Stations"
         columns={columns}
-        data={stations}
+        data={stations instanceof Array ? stations : []}
         highlightOnHover
         pagination
         paginationServer
