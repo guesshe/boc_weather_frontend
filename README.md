@@ -8,3 +8,7 @@ Follow the below steps to run the project.
 ## Use following link to access.
 
 localhost:3000
+
+## Note! This is frontend only, to start backend, please clone following project and launch in backend only mode
+
+git clone git@github.com:guesshe/boc_weather.git
