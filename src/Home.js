@@ -45,17 +45,18 @@ function Home() {
     }).catch(err => {
       setStations({});
     });
-    if(init == true) {
+    if(init === true) {
       init = false;
     }
   }
 
   useEffect(() => {
-    if(init == true || searchButtonInit == false) {
+    if(init === true || searchButtonInit === false) {
       getStationList();
     } else {
       searchList();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, countPerPage]);
 
   const [startDate, setStartDate] = useState(defaultStartDate);
@@ -71,7 +72,7 @@ function Home() {
     }).catch(err => {
       setStations({});
     });
-    if(searchButtonInit == false){
+    if(searchButtonInit === false){
       searchButtonInit = true;
     }
   }

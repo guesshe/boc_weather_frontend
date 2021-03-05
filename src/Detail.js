@@ -17,6 +17,7 @@ function Detail(props) {
 
   useEffect(() => {
     getStation();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
