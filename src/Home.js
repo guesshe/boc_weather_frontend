@@ -34,7 +34,7 @@ function Home() {
   const [stations, setStations] = useState({});
   const [metaData, setMetaData] = useState({});
   const [page, setPage] = useState(1);
-  const countPerPage = 25;
+  const [countPerPage, setCountPerPage] = useState(10);
 
   const getStationList = () => {
     axios.get(`http://localhost:8090/weatherstations?page=${page}&max=${countPerPage}`).then(res => {
@@ -47,7 +47,7 @@ function Home() {
 
   useEffect(() => {
     getStationList();
-  }, [page]);
+  }, [page, countPerPage]);
 
   const [startDate, setStartDate] = useState(defaultStartDate);
   const [endDate, setEndDate] = useState(defaultEndDate);
@@ -93,11 +93,8 @@ function Home() {
         pagination
         paginationServer
         paginationTotalRows={metaData.itemsCount}
-        paginationPerPage={countPerPage}
-        paginationComponentOptions={{
-          noRowsPerPage: true
-        }}
         onChangePage={page => setPage(page)}
+        onChangeRowsPerPage={currentRowsPerPage => setCountPerPage(currentRowsPerPage)}
       />
       </Card>
     </div>
