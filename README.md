@@ -1,3 +1,10 @@
+## Prerequisites
+
+sudo apt-get install npm
+
+sudo apt-get install nodejs
+
+
 ## Quick Start
 
 Follow the below steps to run the project.
@@ -7,7 +14,7 @@ Follow the below steps to run the project.
 
 ## Use following link to access.
 
-localhost:3000
+http://localhost:3000
 
 ## Note! This is frontend only, to start backend, please clone following project and launch in backend only mode
 
