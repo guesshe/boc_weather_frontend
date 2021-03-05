@@ -9,6 +9,8 @@ import axios from 'axios';
 
 var defaultStartDate = new Date(2016,1,1);
 var defaultEndDate = new Date(2017,1,1);
+var init = true;
+var searchButtonInit = false;
 
 const columns = [
   {
@@ -43,10 +45,17 @@ function Home() {
     }).catch(err => {
       setStations({});
     });
+    if(init == true) {
+      init = false;
+    }
   }
 
   useEffect(() => {
-    getStationList();
+    if(init == true || searchButtonInit == false) {
+      getStationList();
+    } else {
+      searchList();
+    }
   }, [page, countPerPage]);
 
   const [startDate, setStartDate] = useState(defaultStartDate);
@@ -62,6 +71,9 @@ function Home() {
     }).catch(err => {
       setStations({});
     });
+    if(searchButtonInit == false){
+      searchButtonInit = true;
+    }
   }
 
   return (
